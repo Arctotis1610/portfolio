@@ -1,4 +1,5 @@
 import "./App.css";
+import MusicPlayer from "./components/MusicPlayer";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
               alt="Profile"
               className="w-full h-full object-cover rounded-full shadow-lg border-4 border-white aspect-square"
             />
+          </div>
+          <div>
+            <h1>My Portfolio</h1>
+            <MusicPlayer />
           </div>
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
