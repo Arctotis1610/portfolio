@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlay,
@@ -13,11 +13,20 @@ const getTrackName = (filePath) => {
   return fileName.replace(/\.[^/.]+$/, ""); // 拡張子を除去
 };
 
+// 時間（秒）を分:秒形式にフォーマットする関数
+const formatTime = (seconds) => {
+  const mins = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${mins}:${secs < 10 ? "0" : ""}${secs}`;
+};
+
 const MusicPlayer = () => {
   const audioRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [volume, setVolume] = useState(0.05);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0); // 再生時間
+  const [duration, setDuration] = useState(0); // 曲の長さ
 
   // 曲リスト
   const tracks = [
@@ -69,6 +78,34 @@ const MusicPlayer = () => {
     audioRef.current.volume = newVolume;
   };
 
+  const handleSeekChange = (e) => {
+    const newTime = parseFloat(e.target.value);
+    setCurrentTime(newTime);
+    audioRef.current.currentTime = newTime; // 再生位置を変更
+  };
+
+  const updateCurrentTime = () => {
+    setCurrentTime(audioRef.current.currentTime);
+  };
+
+  const setSongDuration = () => {
+    setDuration(audioRef.current.duration);
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio) {
+      audio.addEventListener("timeupdate", updateCurrentTime);
+      audio.addEventListener("loadedmetadata", setSongDuration);
+    }
+    return () => {
+      if (audio) {
+        audio.removeEventListener("timeupdate", updateCurrentTime);
+        audio.removeEventListener("loadedmetadata", setSongDuration);
+      }
+    };
+  }, []);
+
   return (
     <div style={styles.container}>
       <h2>BGM Controller</h2>
@@ -103,6 +140,19 @@ const MusicPlayer = () => {
         />
         {/* <span>{Math.round(Math.min(volume * 100, 50))}%</span>{" "}
         表記を最大50%まで%表記してるところ */}
+      </div>
+      <div style={styles.seekBar}>
+        <input
+          type="range"
+          min="0"
+          max={duration}
+          value={currentTime}
+          onChange={handleSeekChange}
+          style={styles.seekInput}
+        />
+        <span>
+          {formatTime(currentTime)} / {formatTime(duration)}
+        </span>
       </div>
     </div>
   );
@@ -144,6 +194,15 @@ const styles = {
     fontSize: "18px", // アイコンサイズを18pxに拡大
     color: "#007BFF",
     cursor: "pointer",
+  },
+  seekBar: {
+    marginTop: "10px",
+  },
+  seekInput: {
+    width: "100%",
+  },
+  volumeControl: {
+    marginTop: "5px",
   },
 };
 
