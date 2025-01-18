@@ -1,6 +1,6 @@
 import "./App.css";
 import MusicPlayer from "./components/MusicPlayer";
-
+import AgeDisplay from "./components/AgeDisplay";
 function App() {
   return (
     <>
@@ -33,7 +33,6 @@ function App() {
             />
           </div>
           <div>
-            <h1>My Portfolio</h1>
             <MusicPlayer />
           </div>
           <div className="text-center">
@@ -63,6 +62,17 @@ function App() {
                   Education & Career
                 </h3>
                 <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="w-24 flex-shrink-0 text-gray-500">
+                      2001.3.3
+                    </div>
+                    <div>
+                      <p className="font-medium">生誕</p>
+                      <p className="text-gray-600">
+                        <AgeDisplay />
+                      </p>
+                    </div>
+                  </div>
                   <div className="flex items-start">
                     <div className="w-24 flex-shrink-0 text-gray-500">2019</div>
                     <div>
