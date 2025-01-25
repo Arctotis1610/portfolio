@@ -41,7 +41,7 @@ function App() {
               Hiroto Murakami
             </h1>
             <p className="text-2xl md:text-3xl text-blue-500 font-bold mb-8">
-              Frontend Engineer
+              Beginner Frontend Engineer
             </p>
             <a
               href="https://github.com/Arctotis1610"
@@ -68,7 +68,7 @@ function App() {
                       2001.3.3
                     </div>
                     <div>
-                      <p className="font-medium">生誕</p>
+                      <p className="font-medium">誕生</p>
                       <p className="text-gray-600">
                         <AgeDisplay />
                       </p>
