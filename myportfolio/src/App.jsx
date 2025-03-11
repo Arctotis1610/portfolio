@@ -130,7 +130,7 @@ function App() {
                       </div>
                       <div>
                         <p className="font-medium dark:text-white">
-                          Robust Engine inc. Fronted Engineer (Beginner)
+                          Robust Engine inc. Frontend Engineer (Beginner)
                         </p>
                         <p className="text-gray-600 dark:text-gray-300">
                           〜 現在
