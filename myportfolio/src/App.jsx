@@ -1,10 +1,13 @@
+import { useState } from "react";
 import "./App.css";
 import MusicPlayer from "./components/MusicPlayer";
 import AgeDisplay from "./components/AgeDisplay";
 import DarkMode from "./components/DarkMode";
+import { FaMusic } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
 function App() {
+  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
   return (
     <>
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -38,7 +41,15 @@ function App() {
                 >
                   Skills
                 </a>
+                <a></a>
               </nav>
+              <button
+                onClick={() => setShowMusicPlayer(!showMusicPlayer)}
+                className="p-2 bg-gray-200 dark:bg-gray-700 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+              >
+                <FaMusic className="w-6 h-6 text-gray-900 dark:text-white" />
+              </button>
+
               <DarkMode />
             </div>
           </div>
@@ -53,9 +64,12 @@ function App() {
                 className="w-full h-full object-cover rounded-full shadow-lg border-4 border-white aspect-square"
               />
             </div>
-            <div>
-              <MusicPlayer />
-            </div>
+            {showMusicPlayer && (
+              <div className="absolute top-20 right-5 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg">
+                <MusicPlayer />
+              </div>
+            )}
+
             <div className="text-center">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
                 Hiroto Murakami
