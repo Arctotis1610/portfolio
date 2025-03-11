@@ -9,34 +9,38 @@ function App() {
     <>
       <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
         <header className="text-gray-700 border-b border-gray-200 dark:border-gray-700 fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm z-50">
-          <div className="container flex mx-auto p-5 flex-col md:flex-row items-center">
+          <div className="container flex mx-auto p-5 flex-col md:flex-row items-center justify-between">
             <a
               href="#"
               className="font-medium text-gray-900 dark:text-white mb-4 md:mb-0"
             >
               <span className="text-xl ml-3 font-bold">Hiroto Murakami</span>
             </a>
-            <DarkMode />
-            <nav className="md:ml-auto text-base">
-              <a
-                href="#home"
-                className="mr-5 hover:text-blue-500 duration-300 dark:text-white"
-              >
-                Home
-              </a>
-              <a
-                href="#about"
-                className="mr-5 hover:text-blue-500 duration-300 dark:text-white"
-              >
-                About
-              </a>
-              <a
-                href="#skills"
-                className="hover:text-blue-500 duration-300 dark:text-white"
-              >
-                Skills
-              </a>
-            </nav>
+
+            {/* ナビゲーション + ナイトモード切り替えボタン */}
+            <div className="flex items-center space-x-6">
+              <nav className="text-base">
+                <a
+                  href="#home"
+                  className="mr-5 hover:text-blue-500 duration-300 dark:text-white"
+                >
+                  Home
+                </a>
+                <a
+                  href="#about"
+                  className="mr-5 hover:text-blue-500 duration-300 dark:text-white"
+                >
+                  About
+                </a>
+                <a
+                  href="#skills"
+                  className="hover:text-blue-500 duration-300 dark:text-white"
+                >
+                  Skills
+                </a>
+              </nav>
+              <DarkMode />
+            </div>
           </div>
         </header>
 
