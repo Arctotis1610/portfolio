@@ -63,9 +63,10 @@ function App() {
                 href="https://github.com/Arctotis1610"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 duration-300 text-lg"
+                className="inline-flex items-center bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 duration-300 text-lg"
               >
                 <FaGithub className="w-6 h-6 mr-2" />
+                GitHub
               </a>
 
               {/* <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
